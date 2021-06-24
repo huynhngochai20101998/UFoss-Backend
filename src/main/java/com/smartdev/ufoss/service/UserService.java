@@ -3,11 +3,9 @@ package com.smartdev.ufoss.service;
 import com.smartdev.ufoss.converter.UserConverter;
 import com.smartdev.ufoss.dto.UserDTO;
 import com.smartdev.ufoss.entity.UserEntity;
-import com.smartdev.ufoss.exception.UserNotFoundException;
 import com.smartdev.ufoss.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -44,6 +44,14 @@
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>2.5.1</version>
         </dependency>
+        <!-- org.apache.httpcomponents -->
+        <!-- Login with gmail -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-client</artifactId>
+            <version>5.5.1</version>
+        </dependency>
+
 
         <!--dependency for Security, authentication & token-->
         <dependency>

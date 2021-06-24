@@ -26,6 +26,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecretKey secretKey;
     private final JwtConfig jwtConfig;
 
+
     @Autowired
     public ApplicationSecurityConfig(PasswordEncoder passwordEncoder,
                                      ApplicationUserService applicationUserService,
@@ -42,16 +43,21 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(new JwtUsernameAndPasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig), JwtUsernameAndPasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*", "/login").permitAll()
+                .antMatchers("/", "/**", "index", "/css/*", "/js/*", "/login").permitAll()
                 //.antMatchers("/admin/*").hasRole(ADMIN.name())
                 .anyRequest()
-                .authenticated();
+                .authenticated()
+                .and()
+                .oauth2Login();
+
     }
+
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
